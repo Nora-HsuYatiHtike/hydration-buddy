@@ -1,0 +1,22 @@
+{
+  "name": "Stay Hydrated”,
+  "description": "Reminds you to drink water every 20 minutes to help you stay hydrated and healthy while working.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "stay_hydrated.png",
+    "32": "stay_hydrated.png",
+    "48": "stay_hydrated.png",
+    "128": "stay_hydrated.png"
+  },
+  "permissions": ["alarms", "notifications", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": “stay_hydrated.png"
+  },
+  "author": “Hsu “Yati Htike,
+  "homepage_url": ""
+}
