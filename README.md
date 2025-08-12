@@ -1,4 +1,5 @@
 # Hydration Buddy
+## Video Demo: https://youtu.be/HIiCGP48m7c
 Never forget to drink water again! Hydration Buddy sends gentle reminders every 25 minutes so you can stay refreshed and focused throughout your day.
 
 # What It Does
