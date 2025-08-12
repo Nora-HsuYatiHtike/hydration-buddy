@@ -1,5 +1,5 @@
 # Hydration Buddy
-Never forget to drink water again! Hydration Buddy sends gentle reminders every 20 minutes so you can stay refreshed and focused throughout your day.
+Never forget to drink water again! Hydration Buddy sends gentle reminders every 25 minutes so you can stay refreshed and focused throughout your day.
 
 # What It Does
 Spending long hours working or studying? It’s easy to forget basic self-care like drinking enough water. Hydration Buddy is a simple Chrome extension that nudges you with a friendly alert every 20 minutes, helping you build a healthy hydration habit and feel your best.
@@ -15,7 +15,7 @@ I noticed I was often dehydrated during long work sessions, which affected my en
 5. The extension will start sending hydration reminders every 20 minutes automatically
 
 # Customization
-The reminder interval is currently set to 20 minutes, but you can easily adjust the timing in the code if you prefer.
+The reminder interval is currently set to 25 minutes, but you can easily adjust the timing in the code if you prefer.
 
 # Contact
 Questions or feedback? Feel free to reach out! [hsuyatihtike43@gmail.com]
