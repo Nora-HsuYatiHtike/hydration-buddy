@@ -14,7 +14,7 @@
   },
   "permissions": ["alarms", "notifications", "storage"],
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "pop up.html",
     "default_icon": "stay_hydrated.png"
   },
   "author": "Hsu Yati Htike",
