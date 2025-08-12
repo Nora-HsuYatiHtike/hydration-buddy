@@ -1,5 +1,5 @@
 {
-  "name": "Stay Hydrated”,
+  "name": "Stay Hydrated",
   "description": "Reminds you to drink water every 20 minutes to help you stay hydrated and healthy while working.",
   "version": "1.0",
   "manifest_version": 3,
@@ -15,8 +15,8 @@
   "permissions": ["alarms", "notifications", "storage"],
   "action": {
     "default_popup": "popup.html",
-    "default_icon": “stay_hydrated.png"
+    "default_icon": "stay_hydrated.png"
   },
-  "author": “Hsu “Yati Htike,
+  "author": "Hsu Yati Htike",
   "homepage_url": "https://github.com/Nora-HsuYatiHtike/hydration-buddy"
 }
