@@ -1,35 +1,43 @@
 // ===========================
-// Stay Hydrated Extension
-// MV3 service worker version
+// Stay Hydrated Extension - MV3
 // ===========================
 
 // When extension is installed or updated
 chrome.runtime.onInstalled.addListener(() => {
   console.log("Stay Hydrated extension installed/updated");
 
-  // Log notification permission level
+  // Check notification permission
   chrome.notifications.getPermissionLevel((level) => {
     console.log("Notification permission:", level);
   });
+
+  // For testing — create a short 6-second alarm
+  chrome.alarms.create("stay_hydrated", { delayInMinutes: 0.1, periodInMinutes: 0.1 });
+  console.log("Test alarm created (fires every 6 seconds)");
 });
 
-// When Chrome starts up (helps debug wake-ups)
+// On Chrome startup
 chrome.runtime.onStartup.addListener(() => {
   console.log("Extension started");
 });
 
-// Alarm listener (top-level so it's always registered)
+// Alarm listener (always top-level)
 chrome.alarms.onAlarm.addListener((alarm) => {
-  if (alarm.name === "stay_healthy") {
+  if (alarm.name === "stay_hydrated") {
     console.log("Alarm fired:", alarm);
 
+    // Wake extension with badge update
+    chrome.action.setBadgeText({ text: "💧" });
+    chrome.action.setBadgeBackgroundColor({ color: "#00AEEF" });
+
+    // Send notification
     chrome.notifications.create({
       type: "basic",
       iconUrl: "stay_hydrated.png",
       title: "Stay Hydrated!",
       message: "Time to sip water!",
       priority: 2,
-      requireInteraction: true, // stays until dismissed
+      requireInteraction: true,
     }, (notificationId) => {
       if (chrome.runtime.lastError) {
         console.error("Notification error:", chrome.runtime.lastError);
@@ -40,11 +48,11 @@ chrome.alarms.onAlarm.addListener((alarm) => {
   }
 });
 
-// Message listener for popup.js
+// Message listener from popup.js
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   try {
     if (request.action === "reset") {
-      chrome.alarms.clear("stay_healthy", () => {
+      chrome.alarms.clear("stay_hydrated", () => {
         if (chrome.runtime.lastError) {
           console.error("Error clearing alarm:", chrome.runtime.lastError);
           sendResponse({ success: false, error: chrome.runtime.lastError });
@@ -53,7 +61,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           sendResponse({ success: true });
         }
       });
-      return true; // keep the message channel open
+      return true;
     }
 
     if (request.time) {
@@ -73,18 +81,17 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   return true;
 });
 
-// Helper: create or reset the alarm
+// Helper: create/reset alarm
 function createAlarm(minutes) {
   console.log(`Creating alarm for ${minutes} minutes`);
-  chrome.alarms.clear("stay_healthy", () => {
-    chrome.alarms.create("stay_healthy", {
+  chrome.alarms.clear("stay_hydrated", () => {
+    chrome.alarms.create("stay_hydrated", {
       delayInMinutes: minutes,
-      periodInMinutes: minutes, // repeats
+      periodInMinutes: minutes,
     });
     console.log("Alarm created successfully");
 
-    // For debugging: check current alarm
-    chrome.alarms.get("stay_healthy", (alarm) => {
+    chrome.alarms.get("stay_hydrated", (alarm) => {
       console.log("Current alarm:", alarm);
     });
   });
